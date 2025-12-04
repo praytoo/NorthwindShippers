@@ -45,12 +45,12 @@ public class ShippersDao {
     public List<Shippers> displayAllShippers() {
         List<Shippers> shippers = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT shipperId, companyName, phone FROM shippers;");
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT shipperID, companyName, phone FROM shippers;");
 
              ResultSet resultSet = preparedStatement.executeQuery();) {
 
             while (resultSet.next()) {
-                int shipper_id = resultSet.getInt("shipperId");
+                int shipper_id = resultSet.getInt("shipperID");
                 String companyName = resultSet.getString("companyName");
                 String phone = resultSet.getString("phone");
 
@@ -67,7 +67,7 @@ public class ShippersDao {
 
     public int shipperUpdate() {
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE shippers SET phone = ?" + "WHERE shipper_id = ?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE shippers SET phone = ?" + "WHERE shipperID = ?;")) {
 
             preparedStatement.setString(1, ShipperInput.updateShipper2());
             preparedStatement.setString(2, ShipperInput.updateShipper1());
@@ -84,7 +84,7 @@ public class ShippersDao {
 
     public int shipperDelete() {
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM shipper WHERE shipper_id = ?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM shippers WHERE shipperID = ?;")) {
 
             preparedStatement.setString(1, ShipperInput.deleteShipper());
 

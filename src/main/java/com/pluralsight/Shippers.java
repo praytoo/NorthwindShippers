@@ -22,30 +22,6 @@ public class Shippers {
         while (!endProgram) {
             endProgram = homeScreen(dataManager);
         }
-
-        int shippers = dataManager.shipperAdd();
-
-        System.out.println(shippers);
-
-        List<Shippers> shippersAll = dataManager.displayAllShippers();
-
-        System.out.println(shippersAll);
-
-        int shippersUpdate = dataManager.shipperUpdate();
-
-        System.out.println(shippersUpdate);
-
-        List<Shippers> shippersAll2 = dataManager.displayAllShippers();
-
-        System.out.println(shippersAll2);
-
-        int shipperDelete = dataManager.shipperDelete();
-
-        System.out.println(shipperDelete);
-
-        List<Shippers> shippersAll3 = dataManager.displayAllShippers();
-
-        System.out.println(shippersAll3);
     }
 
     public static boolean homeScreen(ShippersDao dataManager) {
@@ -58,19 +34,23 @@ public class Shippers {
                  0) Exit
                 Select an option:
                 """);
-        out.println(options);
         switch (getNumberChoice(options)) {
             case 1:
-                dataManager.shipperAdd();
+                int shippers = dataManager.shipperAdd();
+                System.out.println(shippers);
                 break;
             case 2:
-                dataManager.shipperUpdate();
+                int shippersUpdate = dataManager.shipperUpdate();
+                System.out.println(shippersUpdate);
                 break;
             case 3:
-                dataManager.shipperDelete();
+                int shipperDelete = dataManager.shipperDelete();
+                System.out.println(shipperDelete);
                 break;
             case 4:
-                dataManager.displayAllShippers();
+                List<Shippers> shippersAll = dataManager.displayAllShippers();
+                System.out.println(shippersAll);
+                break;
             case 0:
                 System.exit(0);
                 break;
